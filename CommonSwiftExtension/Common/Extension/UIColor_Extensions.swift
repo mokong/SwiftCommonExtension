@@ -34,19 +34,20 @@ extension UIColor {
 
         public static let hightlightText: UIColor = dynamicColor(light: UIColor(hex: 0x2E7CF6), dark: UIColor(hex: 0x2E7CF6))
         public static let primaryText: UIColor = dynamicColor(light: UIColor(hex: 0x333333), dark: UIColor(hex: 0x333333))
-        public static let halfPrimaryText: UIColor = dynamicColor(light: UIColor(hex: 0x333333, alpha: 0.5), dark: UIColor(hex: 0x333333, alpha: 0.5))
         public static let secondaryText: UIColor = dynamicColor(light: UIColor(hex: 0x818181), dark: UIColor(hex: 0x818181))
-        public static let halfSecondaryText: UIColor = dynamicColor(light: UIColor(hex: 0x818181, alpha: 0.5), dark: UIColor(hex: 0x818181, alpha: 0.5))
         public static let whiteText: UIColor = dynamicColor(light: .white, dark: .white)
 
-        public static let primaryButton: UIColor = dynamicColor(light: UIColor(hex: 0x73533E), dark: UIColor(hex: 0x73533E))
+        public static let primaryButton: UIColor = dynamicColor(light: UIColor(hex: 0x367EF5), dark: UIColor(hex: 0x367EF5))
         public static let secondaryButton: UIColor = dynamicColor(light: UIColor(hex: 0x878787), dark: UIColor(hex: 0x878787))
         public static let normalButton: UIColor = dynamicColor(light: UIColor(hex: 0x272727), dark: UIColor(hex: 0x272727))
         public static let selectedButton: UIColor = dynamicColor(light: UIColor(hex: 0x2E7CF6), dark: UIColor(hex: 0x2E7CF6))
-        public static let unabledButton: UIColor = dynamicColor(light: UIColor(hex: 0xBBBBBB), dark: UIColor(hex: 0xBBBBBB))
 
 
-        public static let navigationBar1: UIColor = dynamicColor(light: UIColor(hex: 0x73533E), dark: UIColor(hex: 0x73533E))
+        public static let navigationBar1: UIColor = dynamicColor(light: UIColor(hex: 0x2E7CF6), dark: UIColor(hex: 0x2E7CF6)) // meiju, 天蓝色
+        public static let navigationBar2: UIColor = dynamicColor(light: UIColor(hex: 0xF2835A), dark: UIColor(hex: 0xF2835A)) // hanju, 粉红色
+        public static let navigationBar3: UIColor = dynamicColor(light: UIColor(hex: 0x57A8D7), dark: UIColor(hex: 0x57A8D7)) // riju, 小清新
+        public static let navigationBar4: UIColor = dynamicColor(light: UIColor(hex: 0x40444E), dark: UIColor(hex: 0x40444E)) // taiju,
+
     }
 }
 
