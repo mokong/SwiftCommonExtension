@@ -13,6 +13,18 @@
 		481F815E27954CB800B2B36D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 481F815C27954CB800B2B36D /* Main.storyboard */; };
 		481F816027954CBD00B2B36D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 481F815F27954CBD00B2B36D /* Assets.xcassets */; };
 		481F816327954CBD00B2B36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 481F816127954CBD00B2B36D /* LaunchScreen.storyboard */; };
+		481F817A27954CEE00B2B36D /* UIViewController_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F816C27954CEE00B2B36D /* UIViewController_Extensions.swift */; };
+		481F817B27954CEE00B2B36D /* Data_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F816D27954CEE00B2B36D /* Data_Extension.swift */; };
+		481F817C27954CEE00B2B36D /* UIFont_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F816E27954CEE00B2B36D /* UIFont_Extensions.swift */; };
+		481F817D27954CEE00B2B36D /* String_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F816F27954CEE00B2B36D /* String_Extensions.swift */; };
+		481F817E27954CEE00B2B36D /* UIKit_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F817027954CEE00B2B36D /* UIKit_Extensions.swift */; };
+		481F817F27954CEE00B2B36D /* UIColor_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F817127954CEE00B2B36D /* UIColor_Extensions.swift */; };
+		481F818027954CEE00B2B36D /* Date_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F817227954CEE00B2B36D /* Date_Extensions.swift */; };
+		481F818127954CEE00B2B36D /* ProjectConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F817427954CEE00B2B36D /* ProjectConsts.swift */; };
+		481F818227954CEE00B2B36D /* MWNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F817627954CEE00B2B36D /* MWNavigationController.swift */; };
+		481F818327954CEE00B2B36D /* MWBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F817727954CEE00B2B36D /* MWBaseViewController.swift */; };
+		481F818427954CEE00B2B36D /* PrivacyAlertViewModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F817827954CEE00B2B36D /* PrivacyAlertViewModule.swift */; };
+		481F818527954CEE00B2B36D /* PrivacyAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F817927954CEE00B2B36D /* PrivacyAlertView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +36,18 @@
 		481F815F27954CBD00B2B36D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		481F816227954CBD00B2B36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		481F816427954CBD00B2B36D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		481F816C27954CEE00B2B36D /* UIViewController_Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController_Extensions.swift; sourceTree = "<group>"; };
+		481F816D27954CEE00B2B36D /* Data_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data_Extension.swift; sourceTree = "<group>"; };
+		481F816E27954CEE00B2B36D /* UIFont_Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont_Extensions.swift; sourceTree = "<group>"; };
+		481F816F27954CEE00B2B36D /* String_Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String_Extensions.swift; sourceTree = "<group>"; };
+		481F817027954CEE00B2B36D /* UIKit_Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKit_Extensions.swift; sourceTree = "<group>"; };
+		481F817127954CEE00B2B36D /* UIColor_Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor_Extensions.swift; sourceTree = "<group>"; };
+		481F817227954CEE00B2B36D /* Date_Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date_Extensions.swift; sourceTree = "<group>"; };
+		481F817427954CEE00B2B36D /* ProjectConsts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectConsts.swift; sourceTree = "<group>"; };
+		481F817627954CEE00B2B36D /* MWNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWNavigationController.swift; sourceTree = "<group>"; };
+		481F817727954CEE00B2B36D /* MWBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWBaseViewController.swift; sourceTree = "<group>"; };
+		481F817827954CEE00B2B36D /* PrivacyAlertViewModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyAlertViewModule.swift; sourceTree = "<group>"; };
+		481F817927954CEE00B2B36D /* PrivacyAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyAlertView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +80,8 @@
 		481F815527954CB800B2B36D /* CommonSwiftExtension */ = {
 			isa = PBXGroup;
 			children = (
+				481F817527954CEE00B2B36D /* Base */,
+				481F816A27954CEE00B2B36D /* Common */,
 				481F815627954CB800B2B36D /* AppDelegate.swift */,
 				481F815827954CB800B2B36D /* SceneDelegate.swift */,
 				481F815A27954CB800B2B36D /* ViewController.swift */,
@@ -65,6 +91,48 @@
 				481F816427954CBD00B2B36D /* Info.plist */,
 			);
 			path = CommonSwiftExtension;
+			sourceTree = "<group>";
+		};
+		481F816A27954CEE00B2B36D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				481F816B27954CEE00B2B36D /* Extension */,
+				481F817327954CEE00B2B36D /* Const */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		481F816B27954CEE00B2B36D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				481F816C27954CEE00B2B36D /* UIViewController_Extensions.swift */,
+				481F816D27954CEE00B2B36D /* Data_Extension.swift */,
+				481F816E27954CEE00B2B36D /* UIFont_Extensions.swift */,
+				481F816F27954CEE00B2B36D /* String_Extensions.swift */,
+				481F817027954CEE00B2B36D /* UIKit_Extensions.swift */,
+				481F817127954CEE00B2B36D /* UIColor_Extensions.swift */,
+				481F817227954CEE00B2B36D /* Date_Extensions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		481F817327954CEE00B2B36D /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				481F817427954CEE00B2B36D /* ProjectConsts.swift */,
+			);
+			path = Const;
+			sourceTree = "<group>";
+		};
+		481F817527954CEE00B2B36D /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				481F817627954CEE00B2B36D /* MWNavigationController.swift */,
+				481F817727954CEE00B2B36D /* MWBaseViewController.swift */,
+				481F817827954CEE00B2B36D /* PrivacyAlertViewModule.swift */,
+				481F817927954CEE00B2B36D /* PrivacyAlertView.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +206,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				481F818427954CEE00B2B36D /* PrivacyAlertViewModule.swift in Sources */,
+				481F817D27954CEE00B2B36D /* String_Extensions.swift in Sources */,
+				481F817A27954CEE00B2B36D /* UIViewController_Extensions.swift in Sources */,
 				481F815B27954CB800B2B36D /* ViewController.swift in Sources */,
+				481F818227954CEE00B2B36D /* MWNavigationController.swift in Sources */,
+				481F818527954CEE00B2B36D /* PrivacyAlertView.swift in Sources */,
+				481F817C27954CEE00B2B36D /* UIFont_Extensions.swift in Sources */,
 				481F815727954CB800B2B36D /* AppDelegate.swift in Sources */,
+				481F818127954CEE00B2B36D /* ProjectConsts.swift in Sources */,
 				481F815927954CB800B2B36D /* SceneDelegate.swift in Sources */,
+				481F817E27954CEE00B2B36D /* UIKit_Extensions.swift in Sources */,
+				481F817B27954CEE00B2B36D /* Data_Extension.swift in Sources */,
+				481F817F27954CEE00B2B36D /* UIColor_Extensions.swift in Sources */,
+				481F818327954CEE00B2B36D /* MWBaseViewController.swift in Sources */,
+				481F818027954CEE00B2B36D /* Date_Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
