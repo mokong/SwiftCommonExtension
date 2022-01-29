@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		480D728C27A5060B0062CEBE /* MWAppLaunchTempVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480D728A27A5060B0062CEBE /* MWAppLaunchTempVC.swift */; };
+		480D728D27A5060B0062CEBE /* MWBasePrivacyProtoclVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480D728B27A5060B0062CEBE /* MWBasePrivacyProtoclVC.swift */; };
+		480D729027A508980062CEBE /* MWLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480D728F27A508980062CEBE /* MWLocationManager.swift */; };
 		481F815727954CB800B2B36D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F815627954CB800B2B36D /* AppDelegate.swift */; };
 		481F815927954CB800B2B36D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F815827954CB800B2B36D /* SceneDelegate.swift */; };
 		481F815B27954CB800B2B36D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F815A27954CB800B2B36D /* ViewController.swift */; };
@@ -28,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		480D728A27A5060B0062CEBE /* MWAppLaunchTempVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWAppLaunchTempVC.swift; sourceTree = "<group>"; };
+		480D728B27A5060B0062CEBE /* MWBasePrivacyProtoclVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWBasePrivacyProtoclVC.swift; sourceTree = "<group>"; };
+		480D728F27A508980062CEBE /* MWLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWLocationManager.swift; sourceTree = "<group>"; };
 		481F815327954CB800B2B36D /* CommonSwiftExtension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommonSwiftExtension.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		481F815627954CB800B2B36D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		481F815827954CB800B2B36D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +67,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		480D728E27A508980062CEBE /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				480D728F27A508980062CEBE /* MWLocationManager.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		481F814A27954CB800B2B36D = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +94,7 @@
 		481F815527954CB800B2B36D /* CommonSwiftExtension */ = {
 			isa = PBXGroup;
 			children = (
+				480D728E27A508980062CEBE /* Location */,
 				481F817527954CEE00B2B36D /* Base */,
 				481F816A27954CEE00B2B36D /* Common */,
 				481F815627954CB800B2B36D /* AppDelegate.swift */,
@@ -127,6 +142,8 @@
 		481F817527954CEE00B2B36D /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				480D728A27A5060B0062CEBE /* MWAppLaunchTempVC.swift */,
+				480D728B27A5060B0062CEBE /* MWBasePrivacyProtoclVC.swift */,
 				481F817627954CEE00B2B36D /* MWNavigationController.swift */,
 				481F817727954CEE00B2B36D /* MWBaseViewController.swift */,
 				481F817827954CEE00B2B36D /* PrivacyAlertViewModule.swift */,
@@ -206,11 +223,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				480D729027A508980062CEBE /* MWLocationManager.swift in Sources */,
 				481F818427954CEE00B2B36D /* PrivacyAlertViewModule.swift in Sources */,
+				480D728C27A5060B0062CEBE /* MWAppLaunchTempVC.swift in Sources */,
 				481F817D27954CEE00B2B36D /* String_Extensions.swift in Sources */,
 				481F817A27954CEE00B2B36D /* UIViewController_Extensions.swift in Sources */,
 				481F815B27954CB800B2B36D /* ViewController.swift in Sources */,
 				481F818227954CEE00B2B36D /* MWNavigationController.swift in Sources */,
+				480D728D27A5060B0062CEBE /* MWBasePrivacyProtoclVC.swift in Sources */,
 				481F818527954CEE00B2B36D /* PrivacyAlertView.swift in Sources */,
 				481F817C27954CEE00B2B36D /* UIFont_Extensions.swift in Sources */,
 				481F815727954CB800B2B36D /* AppDelegate.swift in Sources */,

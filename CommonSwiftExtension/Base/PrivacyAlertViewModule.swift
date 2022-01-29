@@ -37,7 +37,7 @@ class PrivacyAlertViewModule {
         }
         
         view.contentTapped = { [weak self] in
-            let privacyVC = TDPrivacyProtoclVC()
+            let privacyVC = MWBasePrivacyProtoclVC()
             self?.vc?.navigationController?.pushViewController(privacyVC, animated: true)
         }
     }

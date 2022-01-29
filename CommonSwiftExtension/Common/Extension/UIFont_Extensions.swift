@@ -17,6 +17,7 @@ public extension UIFont {
         public static let normalFont: UIFont = UIFont.pingFangRegular(16.0)
         public static let descFont: UIFont = UIFont.pingFangRegular(14.0)
         public static let footerFont: UIFont = UIFont.pingFangRegular(12.0)
+        public static let courierFont: UIFont = UIFont.courierFont(15.0)
     }
     
     enum PingFangFontType: String {
@@ -26,10 +27,15 @@ public extension UIFont {
         case light = "PingFangSC-Light"
         case medium = "PingFangSC-Medium"
         case numberBold = "DINAlternate-Bold"
+        case courier = "Helvetica Neue"
     }
     
     static func mwFont(type: PingFangFontType, size : CGFloat, scale : CGFloat = 1) -> UIFont {
         return UIFont(name: type.rawValue, size: size * scale) ?? UIFont.systemFont(ofSize: size * scale)
+    }
+    
+    static func courierFont(_ size: CGFloat) -> UIFont {
+        return UIFont.mwFont(type: .courier, size: size)
     }
     
     static func pingFangRegular(_ size: CGFloat) -> UIFont {

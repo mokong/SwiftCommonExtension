@@ -100,7 +100,7 @@ class PrivacyAlertView: UIView {
             rightButton = UIButton(type: .custom)
         }
         rightButton?.titleLabel?.font = UIFont.MWCustomFont.headerFont
-        rightButton?.setTitleColor(UIColor.MWCustomColor.selectedButton, for: .normal)
+        rightButton?.setTitleColor(UIColor.MWCustomColor.navigationBar1, for: .normal)
         rightButton?.addTarget(self, action: #selector(rightBtnAction(_:)), for: .touchUpInside)
         addSubview(rightButton!)
         
@@ -158,7 +158,7 @@ class PrivacyAlertView: UIView {
     fileprivate func updateContentLabel(desc: String, highlightStr: String) {
         let attributedStrM : NSMutableAttributedString = NSMutableAttributedString(string: desc)
         let range = (desc as NSString).range(of: highlightStr)
-        attributedStrM.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.MWCustomColor.hightlightText, range: range)
+        attributedStrM.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.MWCustomColor.navigationBar1, range: range)
         contentLabel?.attributedText = attributedStrM
     }
     

@@ -16,11 +16,21 @@ class MWCameraBaseVC: UIViewController {
     // 禁止点击聚焦区域
     var unableFocusRects: [String] = []
     // 默认摄像头
-    fileprivate var devicePosition: AVCaptureDevice.Position = .back
+    var devicePosition: AVCaptureDevice.Position = .back
     // 默认闪光灯模式
-    fileprivate var torchMode: AVCaptureDevice.TorchMode = .auto
+    var torchMode: AVCaptureDevice.TorchMode = .auto {
+        didSet {
+            updateTorchMode(torchMode)
+        }
+    }
+    var flashMode: AVCaptureDevice.FlashMode = .auto {
+        didSet {
+            updateFlashMode()
+        }
+    }
+    
     // 拍摄分辨率
-    fileprivate var sessionPreset: AVCaptureSession.Preset = .high {
+    var sessionPreset: AVCaptureSession.Preset = .photo {
         didSet {
             updateSessionPreset()
         }
@@ -34,7 +44,7 @@ class MWCameraBaseVC: UIViewController {
     }
     
     // 系统是否支持旋转
-    fileprivate var isSysRotateOn: Bool = false
+    var isSysRotateOn: Bool = false
     
     // 输入设备和输出设备之间的数据传递
     fileprivate var session: AVCaptureSession?
@@ -45,11 +55,13 @@ class MWCameraBaseVC: UIViewController {
     // 视频输出流
     fileprivate var videoOutput: AVCaptureVideoDataOutput?
     // 预览图层，显示相机拍摄到的画面
-    fileprivate var previewLayer: AVCaptureVideoPreviewLayer?
+    var previewLayer: AVCaptureVideoPreviewLayer?
+    lazy var previewView: UIView = UIView()
+    fileprivate var focusMode: AVCaptureDevice.FocusMode = .continuousAutoFocus
     
     // 拍摄生成的预览照片
-    fileprivate var takedImageView: UIImageView?
-    fileprivate var takedImage: UIImage?
+    var takedImageView: UIImageView?
+    var takedImage: UIImage?
 
     // 设置不能连续相应点击，否则连续相应过程中会出现屏幕中间部分变暗
     fileprivate var isSwitchingCamera: Bool = false
@@ -67,7 +79,10 @@ class MWCameraBaseVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        modalPresentationStyle = .fullScreen
+//        modalPresentationStyle = .fullScreen
+//        edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
+//        automaticallyAdjustsScrollViewInsets = false
+//        extendedLayoutIncludesOpaqueBars = false
         
         configCamera()
         loadCameraDefaultSettings()
@@ -76,16 +91,20 @@ class MWCameraBaseVC: UIViewController {
         session?.startRunning()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        session?.startRunning()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        session?.startRunning()
         updateFocusCurson(with: self.view.center)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        previewLayer?.frame = view.layer.bounds
+        previewLayer?.frame = previewView.bounds
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -124,6 +143,8 @@ class MWCameraBaseVC: UIViewController {
         // 设置相机画面输入流
         let deviceSession = AVCaptureDevice.DiscoverySession.init(deviceTypes: getDeviceType(), mediaType: AVMediaType.video, position: devicePosition)
         if deviceSession.devices.count > 0, let device = deviceSession.devices.first {
+            NotificationCenter.default.addObserver(self, selector: #selector(updateFocusMode), name: NSNotification.Name.AVCaptureDeviceSubjectAreaDidChange, object: nil)
+            
             do {
                 captureInput = try AVCaptureDeviceInput(device: device)
                 // 将输入添加到 session
@@ -152,10 +173,14 @@ class MWCameraBaseVC: UIViewController {
         updateSessionPreset()
         
         // 预览层
+        previewView.backgroundColor = UIColor.clear
+        view.addSubview(previewView)
+        
         previewLayer = AVCaptureVideoPreviewLayer(session: session!)
-        view.layer.masksToBounds = true
-        previewLayer?.videoGravity = .resizeAspect
-        view.layer.insertSublayer(previewLayer!, at: 0)
+        previewLayer?.frame = previewView.bounds
+        previewView.layer.masksToBounds = true
+        previewLayer?.videoGravity = .resizeAspectFill
+        previewView.layer.insertSublayer(previewLayer!, at: 0)
     }
     
     fileprivate func loadCameraDefaultSettings() {
@@ -168,7 +193,8 @@ class MWCameraBaseVC: UIViewController {
         
         UIDevice.cameraAuthorization { granted in
             if !granted {
-                UIDevice.noAuthHandle(with: .video, on: self)
+                let msg: String = "尚未获取相机访问权限，是否前去获取？"
+                UIDevice.noAuthHandle(with: msg, on: self)
             }
         }
 
@@ -274,23 +300,46 @@ class MWCameraBaseVC: UIViewController {
             }
         }
     }
-//
-//    func configFlashMode() {
-//        guard let device = captureInput?.device else {
-//            return
-//        }
-//
-//        if device.isFlashModeSupported(flashMode),
-//           device.hasFlash == true {
-//            do {
-//                try device.lockForConfiguration()
-//                device.flashMode = flashMode
-//                device.unlockForConfiguration()
-//            } catch {
-//                print(error)
-//            }
-//        }
-//    }
+
+    func updateFlashMode() {
+        guard let device = captureInput?.device else {
+            return
+        }
+
+        if device.isFlashModeSupported(flashMode),
+           device.hasFlash == true {
+            do {
+                try device.lockForConfiguration()
+                device.flashMode = flashMode
+                device.unlockForConfiguration()
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    @objc func updateFocusMode() {
+        guard let device = captureInput?.device else {
+            return
+        }
+
+        do {
+            try device.lockForConfiguration()
+            if device.isFocusModeSupported(.continuousAutoFocus)  {
+                device.focusMode = .continuousAutoFocus
+            }
+            
+            device.isSubjectAreaChangeMonitoringEnabled = true
+            
+            // 曝光模式
+            if device.isExposureModeSupported(.continuousAutoExposure) {
+                device.exposureMode = .continuousAutoExposure
+            }
+            device.unlockForConfiguration()
+        } catch {
+            print(error)
+        }
+    }
     
     /// 亮度回调
     func handleBrightnessChanged(_ brightneddValue: CGFloat) {
@@ -303,6 +352,7 @@ class MWCameraBaseVC: UIViewController {
                                                selector: #selector(handleDeviceOrientationChange),
                                                name: UIDevice.orientationDidChangeNotification,
                                                object: nil)
+        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
     }
     
     /// 处理设备方向改变
@@ -323,8 +373,37 @@ class MWCameraBaseVC: UIViewController {
         deviceOrientationChange(degree)
     }
     
+    // 拍照
     func onTakePicture() {
+        if isTakingPhoto {
+            return
+        }
         
+        isTakingPhoto = true
+        let photoSet = AVCapturePhotoSettings()
+        let supports = photoOutput?.supportedFlashModes
+        if supports?.contains(flashMode) == true {
+            photoSet.flashMode = flashMode
+        }
+        photoOutput?.capturePhoto(with: photoSet, delegate: self)
+    }
+    
+    // 重新拍照
+    func onRetake() {
+        session?.startRunning()
+        DispatchQueue.main.async {
+            self.updateFocusCurson(with: self.view.center)
+            if self.takedImage != nil {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.takedImageView?.isHidden = true
+                }
+                self.isTakingPhoto = false
+            }
+        }
+    }
+    
+    func resetTakedImage() {
+        self.takedImageView?.image = nil
     }
     
     // MARK: - action
@@ -364,7 +443,7 @@ class MWCameraBaseVC: UIViewController {
     fileprivate func updateFocusCurson(with point: CGPoint) {
         // 将 UI 坐标转化为摄像头坐标
         let cameraPoint = previewLayer?.captureDevicePointConverted(fromLayerPoint: point)
-        focus(with: AVCaptureDevice.FocusMode.autoFocus, exposureMode: AVCaptureDevice.ExposureMode.autoExpose, at: cameraPoint!)
+        focus(with: AVCaptureDevice.FocusMode.continuousAutoFocus, exposureMode: AVCaptureDevice.ExposureMode.continuousAutoExposure, at: cameraPoint!)
         cameraTapActionFoucus(point, cameraPoint: cameraPoint!)
     }
     
@@ -387,6 +466,8 @@ class MWCameraBaseVC: UIViewController {
                 device.focusMode = focusMode
             }
             
+            device.isSubjectAreaChangeMonitoringEnabled = true
+
             // 设置聚焦点
             if device.isFocusPointOfInterestSupported {
                 device.focusPointOfInterest = point
@@ -558,7 +639,13 @@ extension MWCameraBaseVC: AVCaptureFileOutputRecordingDelegate {
 
 extension MWCameraBaseVC: AVCapturePhotoCaptureDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        <#code#>
+        // 这个方法会时时调用，但内存很稳定
+        let metadataDict = CMCopyDictionaryOfAttachments(allocator: nil, target: sampleBuffer, attachmentMode: kCMAttachmentMode_ShouldPropagate)
+        let metadata = NSMutableDictionary(dictionary: metadataDict!)
+        if let exifMetaData = metadata.value(forKey: kCGImagePropertyExifDictionary as String) as? NSDictionary,
+            let brightnessValue = exifMetaData.value(forKey: kCGImagePropertyExifBrightnessValue as String) as? Double {
+            handleBrightnessChanged(brightnessValue)
+        }
     }
 }
 
