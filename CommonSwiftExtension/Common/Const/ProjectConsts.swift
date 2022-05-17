@@ -8,9 +8,6 @@
 import Foundation
 import UIKit
 
-/// 友盟 AppKey
-let kUMengAppKey = "61c5793ee0f9bb492baa0cbc"
-
 /// 屏幕宽度
 let MWScreenWidth = UIScreen.main.bounds.size.width
 

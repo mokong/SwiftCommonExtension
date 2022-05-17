@@ -9,14 +9,29 @@ import UIKit
 
 class MWAppLaunchTempVC: MWBaseViewController {
 
+    
+    // MARK: - properties
     private(set) var privacyModule: PrivacyAlertViewModule?
-
+    private(set) var rootVC: UIViewController
+    
+    
+    // MARK: - view life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
         setupPrivacyModule()
+    }
+
+    // MARK: - init
+    init(_ vc: UIViewController) {
+        self.rootVC = vc
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     fileprivate func setupPrivacyModule() {
@@ -27,11 +42,13 @@ class MWAppLaunchTempVC: MWBaseViewController {
                             leftBtnStr: "不同意",
                             rightBtnStr: "知晓并同意")
         privacyModule?.actionCallback = { [weak self] index in
+            if self == nil {
+                return
+            }
             if index == 1 {
                 UserDefaults.standard.setValue("1", forKey: kIsAgreePrivacyPolicy)
                 self?.privacyModule?.hide()
-                let vc = MWWaterMarkCameraVC()
-                let nc = MWNavigationController(rootViewController: vc)
+                let nc = MWNavigationController(rootViewController: self!.rootVC)
                 UIApplication.shared.keyWindow?.rootViewController = nc
             }
             else {
@@ -39,5 +56,15 @@ class MWAppLaunchTempVC: MWBaseViewController {
             }
         }
     }
+    
+    // MARK: - utils
+    
+    
+    // MARK: - action
+    
+    
+    // MARK: - other
+    
+
 
 }
