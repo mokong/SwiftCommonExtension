@@ -30,6 +30,10 @@
 		48C7D97F28334FD900811C4B /* UIView_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C7D97E28334FD900811C4B /* UIView_Extensions.swift */; };
 		48C7D98128334FE400811C4B /* UIDevice_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C7D98028334FE400811C4B /* UIDevice_Extensions.swift */; };
 		48C7D9832833502200811C4B /* UIButton_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C7D9822833502200811C4B /* UIButton_Extensions.swift */; };
+		48C7D987283350D400811C4B /* UIImage_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C7D986283350D400811C4B /* UIImage_Extension.swift */; };
+		48C7D989283350F700811C4B /* UILabel_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C7D988283350F700811C4B /* UILabel_Extension.swift */; };
+		48C7D98B283351E300811C4B /* MWLocalizedStringUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C7D98A283351E300811C4B /* MWLocalizedStringUtil.swift */; };
+		48C7D98D283351F300811C4B /* MWBaseWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C7D98C283351F300811C4B /* MWBaseWebVC.swift */; };
 		E3664B6219E962E39FF1CB23 /* Pods_CommonSwiftExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5BF9DE6E53578AD0BF5EA0 /* Pods_CommonSwiftExtension.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +64,10 @@
 		48C7D97E28334FD900811C4B /* UIView_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView_Extensions.swift; sourceTree = "<group>"; };
 		48C7D98028334FE400811C4B /* UIDevice_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice_Extensions.swift; sourceTree = "<group>"; };
 		48C7D9822833502200811C4B /* UIButton_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton_Extensions.swift; sourceTree = "<group>"; };
+		48C7D986283350D400811C4B /* UIImage_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage_Extension.swift; sourceTree = "<group>"; };
+		48C7D988283350F700811C4B /* UILabel_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel_Extension.swift; sourceTree = "<group>"; };
+		48C7D98A283351E300811C4B /* MWLocalizedStringUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWLocalizedStringUtil.swift; sourceTree = "<group>"; };
+		48C7D98C283351F300811C4B /* MWBaseWebVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWBaseWebVC.swift; sourceTree = "<group>"; };
 		7E5BF9DE6E53578AD0BF5EA0 /* Pods_CommonSwiftExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonSwiftExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85EE1D6C6C46B47CB71B263F /* Pods-CommonSwiftExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonSwiftExtension.debug.xcconfig"; path = "Target Support Files/Pods-CommonSwiftExtension/Pods-CommonSwiftExtension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +164,8 @@
 		481F817527954CEE00B2B36D /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				48C7D98C283351F300811C4B /* MWBaseWebVC.swift */,
+				48C7D98A283351E300811C4B /* MWLocalizedStringUtil.swift */,
 				480D728A27A5060B0062CEBE /* MWAppLaunchTempVC.swift */,
 				480D728B27A5060B0062CEBE /* MWBasePrivacyProtoclVC.swift */,
 				481F817627954CEE00B2B36D /* MWNavigationController.swift */,
@@ -169,12 +179,14 @@
 		48C7D9842833503A00811C4B /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				48C7D986283350D400811C4B /* UIImage_Extension.swift */,
 				481F816C27954CEE00B2B36D /* UIViewController_Extensions.swift */,
 				481F816E27954CEE00B2B36D /* UIFont_Extensions.swift */,
 				481F817127954CEE00B2B36D /* UIColor_Extensions.swift */,
 				48C7D97E28334FD900811C4B /* UIView_Extensions.swift */,
 				48C7D98028334FE400811C4B /* UIDevice_Extensions.swift */,
 				48C7D9822833502200811C4B /* UIButton_Extensions.swift */,
+				48C7D988283350F700811C4B /* UILabel_Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -314,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				480D729027A508980062CEBE /* MWLocationManager.swift in Sources */,
+				48C7D98D283351F300811C4B /* MWBaseWebVC.swift in Sources */,
 				48C7D98128334FE400811C4B /* UIDevice_Extensions.swift in Sources */,
 				481F818427954CEE00B2B36D /* PrivacyAlertViewModule.swift in Sources */,
 				480D728C27A5060B0062CEBE /* MWAppLaunchTempVC.swift in Sources */,
@@ -321,9 +334,12 @@
 				481F817A27954CEE00B2B36D /* UIViewController_Extensions.swift in Sources */,
 				481F815B27954CB800B2B36D /* ViewController.swift in Sources */,
 				481F818227954CEE00B2B36D /* MWNavigationController.swift in Sources */,
+				48C7D98B283351E300811C4B /* MWLocalizedStringUtil.swift in Sources */,
 				480D728D27A5060B0062CEBE /* MWBasePrivacyProtoclVC.swift in Sources */,
 				481F818527954CEE00B2B36D /* PrivacyAlertView.swift in Sources */,
+				48C7D989283350F700811C4B /* UILabel_Extension.swift in Sources */,
 				481F817C27954CEE00B2B36D /* UIFont_Extensions.swift in Sources */,
+				48C7D987283350D400811C4B /* UIImage_Extension.swift in Sources */,
 				48C7D9832833502200811C4B /* UIButton_Extensions.swift in Sources */,
 				481F815727954CB800B2B36D /* AppDelegate.swift in Sources */,
 				481F818127954CEE00B2B36D /* ProjectConsts.swift in Sources */,
